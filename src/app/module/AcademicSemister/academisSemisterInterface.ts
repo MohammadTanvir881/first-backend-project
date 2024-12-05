@@ -3,7 +3,7 @@ import { TAcademicSemesterCode, TAcademicSemesterName, TMonths } from "./academi
 export type TAcademicSemester = {
   name: TAcademicSemesterName;
   code: TAcademicSemesterCode
-  year: Date;
+  year: string;
   startMonth: TMonths;
   endMonth: TMonths;
 };

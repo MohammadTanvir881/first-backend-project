@@ -9,8 +9,6 @@ import {
   TUserName,
 } from './student/student.interface';
 
-
-
 const studentNameSchema = new Schema<TUserName>({
   firstName: {
     type: String,
@@ -125,6 +123,14 @@ const studentSchema = new Schema<TStudent, StudentModel>(
       type: localGuardianSchema,
       required: [true, 'Local guardian information is required.'],
     },
+    admissionSemester: {
+      type: Schema.Types.ObjectId,
+      ref: 'AcademicSemester',
+    },
+    academicDepartment : {
+      type : Schema.Types.ObjectId,
+      ref : "AcademicDepartment"
+    },
     profileImg: {
       type: Boolean,
       required: [true, 'Profile image status is required.'],
@@ -140,8 +146,6 @@ const studentSchema = new Schema<TStudent, StudentModel>(
     },
   },
 );
-
-
 
 // query middleware
 
