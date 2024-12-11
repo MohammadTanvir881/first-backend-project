@@ -47,8 +47,6 @@ import catchAsync from '../utitls/catchAsync';
 //   };
 // };
 
-
-
 const getStudentData = catchAsync(async (req, res) => {
   const result = await studentService.getAllStudentDataFromDb();
   res.status(200).json({
@@ -68,6 +66,17 @@ const getOneStudentData = catchAsync(async (req, res) => {
   });
 });
 
+const updateStudentData = catchAsync(async (req, res) => {
+  const { studentId } = req.params;
+  const { student } = req.body;
+  const result = await studentService.updateStudentDataIntoDb(studentId , student);
+  res.status(200).json({
+    success: true,
+    message: 'student data updated Successfully',
+    res: result,
+  });
+});
+
 const deleteOneStudentData = catchAsync(async (req, res) => {
   const { studentId } = req.params;
   const result = await studentService.deleteStudentData(studentId);
@@ -82,5 +91,6 @@ export const studentController = {
   // createStudent,
   getStudentData,
   getOneStudentData,
+  updateStudentData,
   deleteOneStudentData,
 };
