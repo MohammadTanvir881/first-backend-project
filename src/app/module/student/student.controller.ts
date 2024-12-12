@@ -48,7 +48,9 @@ import catchAsync from '../utitls/catchAsync';
 // };
 
 const getStudentData = catchAsync(async (req, res) => {
-  const result = await studentService.getAllStudentDataFromDb();
+  const query = req.query;
+  // console.log(query)
+  const result = await studentService.getAllStudentDataFromDb(query);
   res.status(200).json({
     success: true,
     message: 'Student data search Successfully',
